@@ -1,3 +1,5 @@
+'use strict';
+
 var expect  = require('chai').expect;
 var calc = require('../calc');
 
@@ -34,27 +36,27 @@ describe('test calculating prices', () => {
     });
 
     it('test short interval with returns', () => {
-	result = calc.calcAllValues(data, 2, true);
+	let result = calc.calcAllValues(data, 2, true);
 	expect(result[0].price).to.equal(6); 
     });
 
     it('test medium interval ', () => {
-	result = calc.calcAllValues(data, 10, false);
+	let result = calc.calcAllValues(data, 10, false);
 	expect(result[0].price).to.equal(6); 
     });
 
     it('test medium interval with returns', () => {
-	result = calc.calcAllValues(data, 10, true);
+	let result = calc.calcAllValues(data, 10, true);
 	expect(result[0].price).to.equal(10); 
     });
 
     it('test long interval ', () => {
-	result = calc.calcAllValues(data, 20, false);
+	let result = calc.calcAllValues(data, 20, false);
 	expect(result[0].price).to.equal(10); 
     });
 
     it('test medium interval with returns', () => {
-	result = calc.calcAllValues(data, 20, true);
+	let result = calc.calcAllValues(data, 20, true);
 	expect(result[0].price).to.equal(10); 
     });
 });

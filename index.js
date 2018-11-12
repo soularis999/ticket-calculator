@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 const calc = require("./calc");
 const model = require("./model");
 const express = require('express');
