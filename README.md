@@ -1,64 +1,23 @@
-Welcome to the AWS CodeStar sample web application
-==================================================
+# ticketCalc
 
-This sample code helps get you started with a simple Node.js web service deployed by AWS CloudFormation to AWS Lambda and Amazon API Gateway.
+## Purpose:
+The goal of the project is to calculate optimal tickets combination for Chicago Metra Rail. The idea is that in some scenarios it's cheaper to buy several 10 ride tickets vs buying the monthly ticket. The price of tickets is predefined so this calculation could have been done once and stored however this code does not do that and instead calculates everything on every request.
 
-What's Here
------------
+This is also a minimalistic UI / web application written in node.js. Thought UI part might be extanded in the future.
 
-This sample includes:
+## Requirements:
+npm / node
 
-* README.md - this file
-* buildspec.yml - this file is used by AWS CodeBuild to package your
-  application for deployment to AWS Lambda
-* index.js - this file contains the sample Node.js code for the web service
-* template.yml - this file contains the AWS Serverless Application Model (AWS SAM) used
-  by AWS CloudFormation to deploy your application to AWS Lambda and Amazon API
-  Gateway.
-* tests/ - this directory contains unit tests for your application
+## Build:
+Run the following command in the directory <br/>
+<i>npm install</i>
 
+It's also recommended to run tests <br/>
+<i>npm test</i>
 
-What Do I Do Next?
-------------------
+## Run:
+Run the following command in the directory <br/>
+<i>npm start</i>
 
-If you have checked out a local copy of your repository you can start making
-changes to the sample code.  We suggest making a small change to index.js first,
-so you can see how changes pushed to your project's repository are automatically
-picked up by your project pipeline and deployed to AWS Lambda and Amazon API Gateway.
-(You can watch the pipeline progress on your AWS CodeStar project dashboard.)
-Once you've seen how that works, start developing your own code, and have fun!
-
-To run your tests locally, go to the root directory of the
-sample code and run the `npm test` command, which
-AWS CodeBuild also runs through your `buildspec.yml` file.
-
-To test your new code during the release process, modify the existing tests or
-add tests to the tests directory. AWS CodeBuild will run the tests during the
-build stage of your project pipeline. You can find the test results
-in the AWS CodeBuild console.
-
-Learn more about AWS CodeBuild and how it builds and tests your application here:
-https://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html
-
-Learn more about AWS Serverless Application Model (AWS SAM) and how it works here:
-https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md
-
-AWS Lambda Developer Guide:
-http://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html
-
-Learn more about AWS CodeStar by reading the user guide, and post questions and
-comments about AWS CodeStar on our forum.
-
-User Guide: http://docs.aws.amazon.com/codestar/latest/userguide/welcome.html
-
-Forum: https://forums.aws.amazon.com/forum.jspa?forumID=248
-
-What Should I Do Before Running My Project in Production?
-------------------
-
-AWS recommends you review the security best practices recommended by the framework
-author of your selected sample application before running it in production. You
-should also regularly review and apply any available patches or associated security
-advisories for dependencies used within your application.
-
-Best Practices: https://docs.aws.amazon.com/codestar/latest/userguide/best-practices.html?icmpid=docs_acs_rm_sec
+The server will default to port 3000. However, this can we overriden by
+env variable TICKET_CALC_APP_PORT
