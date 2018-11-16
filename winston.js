@@ -2,20 +2,22 @@ const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, prettyPrint } = format;
 var appRoot = require('app-root-path');
 
+var logDir = process.env.LOG_DIR || `${appRoot}/logs`;
+
 // define the custom settings for each transport (file, console)
 var options = {
     file: {
     	level: 'info',
-    	filename: `${appRoot}/logs/app.log`,
+    	filename: `${logDir}/app.log`,
     	handleExceptions: true,
-    	json: true,
+    	json: false,
     	maxsize: 5242880, // 5MB
     	maxFiles: 5,
     	colorize: false
     },
     error: {
     	level: 'error',
-    	filename: `${appRoot}/logs/error.log`,
+    	filename: `${logDir}/error.log`,
     	handleExceptions: true,
     	json: false,
     	maxsize: 5242880, // 5MB
