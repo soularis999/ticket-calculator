@@ -10,11 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "app-root-path": "^2.1.0",
     "chai": "^4.2.0",
     "express": "^4.16.4",
     "hbs": "^4.0.1",
     "lodash": "^4.17.11",
     "mocha": "^5.2.0",
+    "winston": "^3.1.0",
     "yargs": "^12.0.2"
   }
 }

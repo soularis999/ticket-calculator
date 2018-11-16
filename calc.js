@@ -1,6 +1,8 @@
 'use strict';
 
+const logger = require('./winston');
 const _ = require('lodash');
+
 
 /**
  * month - 1 based month of the year (1-jan, 2-feb,...,12-dec)
@@ -16,7 +18,7 @@ var calcNumDays = (month, year, daysOff) => {
 	if(0 == date.getDay() || 6 == date.getDay() || set.has(date.getDate())) {
 	    continue;
 	}
-	console.log(`${day} = ${date}`);
+	logger.info(`${day} = ${date}`);
 	num++;
     }
     return num;
@@ -40,7 +42,7 @@ var calcAllValues = (data, days, withReturn = true) => {
 	ten.description = `${numTenRides} ten rides and ${numSingleRides} single rides`;
     }
 
-    console.log(prices);
+    logger.info(prices);
     prices.sort((o1,o2) => {
 	return o1.price < o2.price ? -1 : o1.price > o2.price ? 1 : 0;
     });

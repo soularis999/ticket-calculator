@@ -1,5 +1,6 @@
 'use strict';
 
+const logger = require('./winston');
 const _ = require('lodash');
 const fs = require('fs');
 
@@ -10,7 +11,7 @@ var init = () => {
 	if(fs.existsSync('model.json')) {
 	    var values = fs.readFileSync('model.json');
 	    model.values = JSON.parse(values);
-	    console.log(`Checked and loaded: ${JSON.stringify(model)}`);
+	    logger.info(`Checked and loaded: ${JSON.stringify(model)}`);
 	}
 	else {
 	    throw "Model file not found";

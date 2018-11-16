@@ -4,6 +4,8 @@
 
 const calc = require("./calc");
 const model = require("./model");
+const logger = require("./winston");
+
 const express = require('express');
 const hbs = require('hbs');
 const _ = require('lodash');
@@ -52,7 +54,7 @@ function renderData(data, resp) {
 	result.numDays = "";
 	result.model = [];
     }
-    console.log(result);
+    logger.info(result);
     resp.render("index.hbs", result);
 }
 
@@ -142,7 +144,8 @@ function processRequest(data) {
     });
 };
 
-var port = yargs.argv.port || process.env.TICKET_CALC_APP_PORT || 3000;
+var port = yargs.argv.port || process.env.PORT || 3000;
+
 app.listen(port, () => {
-    console.info(`start server on :${port}`);
+    logger.info(`start server on :${port}`);
 });
