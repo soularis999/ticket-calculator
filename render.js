@@ -7,20 +7,13 @@ const model = require("./model");
 const logger = require("./winston");
 
 const express = require('express');
-const hbs = require('hbs');
 const _ = require('lodash');
-const yargs = require('yargs');
 
-var app = express();
-// Defines the view engine to delegate to handlebar
-app.set('view engine', 'hbs');
-
-// will register directory where the partial templates hbs files will be
-// located. The partial templates will be reused by main pages
-hbs.registerPartials(__dirname + '/views/partials/');
+var router = express.Router();
 
 // simple html output
-app.get('/', (request, response) => {
+router.get('/', (request, response) => {
+    console.log("IN request");
     parse(request)
 	.then((data) => { return processRequest(data);})
 	.then((data) => {renderData(data, response); },
@@ -144,8 +137,4 @@ function processRequest(data) {
     });
 };
 
-var port = yargs.argv.port || process.env.PORT || 3000;
-
-app.listen(port, () => {
-    logger.info(`start server on :${port}`);
-});
+module.exports = router;
