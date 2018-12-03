@@ -18,7 +18,7 @@ var calcNumDays = (month, year, daysOff) => {
 	if(0 == date.getDay() || 6 == date.getDay() || set.has(date.getDate())) {
 	    continue;
 	}
-	logger.info(`${day} = ${date}`);
+	logger.debug(`${day} = ${date}`);
 	num++;
     }
     return num;
@@ -42,7 +42,7 @@ var calcAllValues = (data, days, withReturn = true) => {
 	ten.description = `${numTenRides} ten rides and ${numSingleRides} single rides`;
     }
 
-    logger.info(prices);
+    logger.info(`CALC_ALL_VALUES|${JSON.stringify(prices)}`);
     prices.sort((o1,o2) => {
 	return o1.price < o2.price ? -1 : o1.price > o2.price ? 1 : 0;
     });

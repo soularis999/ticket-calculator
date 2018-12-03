@@ -1,5 +1,5 @@
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, prettyPrint } = format;
+const { combine, timestamp, simple } = format;
 var appRoot = require('app-root-path');
 
 var logDir = process.env.LOG_DIR || `${appRoot}/logs`;
@@ -7,7 +7,6 @@ var logDir = process.env.LOG_DIR || `${appRoot}/logs`;
 // define the custom settings for each transport (file, console)
 var options = {
     file: {
-    	level: 'info',
     	filename: `${logDir}/app.log`,
     	handleExceptions: true,
     	json: false,
@@ -25,12 +24,13 @@ var options = {
     	colorize: false
     },
     console: {
-    	level: 'debug',
     	handleExceptions: true,
     	json: false,
     	colorize: true
     }
 };
+
+var _level = process.env.LOG_LEVEL || 'info';
 
 // instantiate a new Winston Logger with the settings defined above
 var logger = createLogger({
@@ -39,10 +39,10 @@ var logger = createLogger({
 	new transports.File(options.error),
 	new transports.Console(options.console)
     ],
-    level: process.env.LOG_LEVEL || 'info',
+    level: _level,
     format: combine(
 	timestamp(),
-	prettyPrint()
+	simple()
     ),
     exitOnError: false // do not exit on handled exceptions
 });
