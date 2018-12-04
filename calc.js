@@ -28,9 +28,8 @@ var calcNumDays = (month, year, daysOff) => {
  * Calculate all values given prices and days to travel
  * provided data will be in form of {monthly: <price>, tenRide: <price>, single: <price>}
  */
-var calcAllValues = (data, days, withReturn = true) => {
-    let rides = withReturn ? days * 2 : days;
-      var prices = [{type: "monthly", price: data.monthly, description: "1 monthly ticket"},
+var calcAllValues = (data, rides) => {
+    var prices = [{type: "monthly", price: data.monthly, description: "1 monthly ticket"},
 		  {type: "single", price: rides * data.single, description: `${rides} single tickets`}];
     var ten = {type: "tenRide", price: data.tenRide};
     prices.push(ten);
@@ -39,7 +38,8 @@ var calcAllValues = (data, days, withReturn = true) => {
 	let numTenRides = _.floor(rides / 10);
 	let numSingleRides = (rides % 10);
 	ten.price = data.tenRide * numTenRides + data.single * numSingleRides;
-	ten.description = `${numTenRides} ten rides and ${numSingleRides} single rides`;
+	ten.description = `${numTenRides} ten rides` +
+	    (0 < numSingleRides ? ` and ${numSingleRides} single rides` : '');
     }
 
     logger.info(`CALC_ALL_VALUES|${JSON.stringify(prices)}`);

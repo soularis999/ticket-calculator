@@ -139,7 +139,8 @@ function processRequest(data) {
 		reject(data);
 		return;
 	    }
-	    data.result = calc.calcAllValues(data.mod, data.numDays, data.roundTrip);
+	    let rides = data.roundTrip ? data.numDays * 2 : data.numDays;
+	    data.result = calc.calcAllValues(data.mod, rides);
 	    resolve(data);
 	} catch(e) {
 	    data.error = `Error: ${e}`;

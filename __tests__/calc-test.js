@@ -36,32 +36,32 @@ describe('test calculating days', () => {
 describe('test calculating prices', () => {
     var data = {monthly: 10, tenRide: 6, single:2};
     test('test short interval without returns', () => {
-	let result = calc.calcAllValues(data, 2, false);
+	let result = calc.calcAllValues(data, 2);
 	expect(result[0].price).toBe(2 * 2);
     });
 
     test('test short interval with returns', () => {
-	let result = calc.calcAllValues(data, 2, true);
+	let result = calc.calcAllValues(data, 4);
 	expect(result[0].price).toBe(6); 
     });
 
     test('test medium interval ', () => {
-	let result = calc.calcAllValues(data, 10, false);
+	let result = calc.calcAllValues(data, 10);
 	expect(result[0].price).toBe(6); 
     });
 
     test('test medium interval with returns', () => {
-	let result = calc.calcAllValues(data, 10, true);
+	let result = calc.calcAllValues(data, 20);
 	expect(result[0].price).toBe(10); 
     });
 
     test('test long interval ', () => {
-	let result = calc.calcAllValues(data, 20, false);
+	let result = calc.calcAllValues(data, 20);
 	expect(result[0].price).toBe(10); 
     });
 
     test('test medium interval with returns', () => {
-	let result = calc.calcAllValues(data, 20, true);
+	let result = calc.calcAllValues(data, 40);
 	expect(result[0].price).toBe(10); 
     });
 });
