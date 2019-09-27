@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular-devkit/build-angular": "0.801.1",
     "@angular/cli": "8.1.1",
     "@angular/compiler-cli": "8.1.1",
     "app-root-path": "^2.1.0",
