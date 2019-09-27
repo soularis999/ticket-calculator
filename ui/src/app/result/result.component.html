@@ -1,0 +1,17 @@
+<div *ngIf="null !== responseResults">
+  <table class="table table-striped table-hover display" style="cellspacing:0;width:100%">
+    <thead>
+      <tr>
+        <th *ngFor="let column of responseColumns">
+          {{column}}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of responseResults">
+        <td *ngFor="let column of responseColumns">{{row[column]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

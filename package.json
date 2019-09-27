@@ -4,16 +4,22 @@
   "description": "Ticket calculator",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "test": "jest",
-    "start": "node server"
+    "start": "node server",
+    "heroku-postbuild": "cd ui && ng build --prod"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "app-root-path": "^2.1.0",
+    "body-parser": "^1.19.0",
+    "eslint": "^6.1.0",
     "express": "^4.16.4",
-    "hbs": "^4.0.1",
     "lodash": "^4.17.11",
+    "package.json": "^2.0.1",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0",
     "winston": "^3.1.0",
     "yargs": "^12.0.2"
   },

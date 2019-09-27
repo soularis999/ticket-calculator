@@ -1,0 +1,44 @@
+<form (submit)="onSubmit(formCtrl)" #formCtrl="ngForm">
+  <div class="form-group">
+    <label for="group">Group:</label>
+    <select id="group" name="group" class="form-control form-control-sm" aria-describedby="groupHelper" required
+            [ngModel]="selectedGroup" #groupCtrl="ngModel">
+      <option *ngFor="let option of options" [value]="option.group">{{option.group}}</option>
+    </select>
+    <small id="groupHelper" class="form-text text-muted" *ngIf="groupCtrl.invalid">
+        Please select a ticket group.
+    </small>
+  </div>
+  <div class="form-group">
+    <label for="date">Month:</label>
+    <input type="text"
+           class="form-control form-control-sm"
+           id="date"
+           name="date"
+           aria-describedby="dateHelper"
+           placeholder="MM/YYYY"
+           required
+           pattern="(0?[1-9]|[1][0-2])\/\d{4}"
+           [ngModel]="date"
+           #dateCtrl="ngModel"/>
+    <small id="dateHelper" class="form-text text-muted" *ngIf="dateCtrl.invalid && dateCtrl.touched">
+      Please provide a month when the ticket will be used.
+    </small>
+  </div>
+  <div class="form-group">
+    <label for="date">Dates To Skip:</label>
+    <input type="text" class="form-control form-control-sm" id="skipDate" name="skipDate"
+    aria-describedby="skipDateHelper" ngModel/>
+    <small id="skipDateHelper" class="form-text text-muted">List days of the month to skip, e.g. 1,2,3 or 1-3</small>
+  </div>
+  <div class="form-group">
+    <label for="date">Round trip:</label>
+    <div class="input-group">
+        <span class="input-group-addon">
+          <input type="checkbox" id="roundTrip" name="roundTrip" value="on"
+          aria-label="Round trip" [ngModel]="roundTrip"/>
+        </span>
+      </div>
+  </div>
+  <input type="submit" value="Submit" class="btn btn-primary" [disabled]="formCtrl.invalid"/>
+</form>

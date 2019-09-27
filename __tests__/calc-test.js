@@ -1,7 +1,7 @@
 'use strict';
 
 var calc = require('../calc');
-var utils = require('../utils');
+
 describe('test calculating days', () => {
     test('testing calculator without days off for oct 2018', (done) => {
 	expect(calc.calcNumDays(10,2018,[])).toBe(23);
@@ -66,63 +66,3 @@ describe('test calculating prices', () => {
     });
 });
 
-
-describe('test parsing dates', () => {
-    test('parse empty string', () => {
-	let result = utils.calculateSkipDates("");
-	expect(result).toEqual([]);
-    });
-
-    test('parse 1 string', () => {
-	let result = utils.calculateSkipDates("1,");
-	expect(result).toEqual([1]);
-    });
-
-    test('parse 1, string', () => {
-	let result = utils.calculateSkipDates("1,");
-	expect(result).toEqual([1]);
-    });
-
-    test('parse ,1, string', () => {
-	let result = utils.calculateSkipDates(",1,");
-	expect(result).toEqual([1]);
-    });
-
-    test('parse 1,2 string', () => {
-	let result = utils.calculateSkipDates("1,2");
-	expect(result).toEqual([1,2]);
-    });
-
-    test('parse 1-2 string', () => {
-	let result = utils.calculateSkipDates("1-2");
-	expect(result).toEqual([1,2]);
-    });
-
-    test('parse 1-3 string', () => {
-	let result = utils.calculateSkipDates("1-3");
-	expect(result).toEqual([1,2,3]);
-    });
-
-    test('parse 1,2-4,5 string', () => {
-	let result = utils.calculateSkipDates("1,2-4,5");
-	expect(result).toEqual([1,2,3,4,5]);
-    });
-
-    test('parse 2-2 string', () => {
-	let result = utils.calculateSkipDates("2-2");
-	expect(result).toEqual([2]);
-    });
-    
-    test('parse 2-1 string', () => {
-	expect(() => {
-	    utils.calculateSkipDates("2-1");
-	}).toThrow('Incorrect range 2-1');
-    });
-
-    test('parse 1-2-3 string', () => {
-	expect(() => {
-	    utils.calculateSkipDates("1-2-3");
-	}).toThrow('more than two values in range 1-2-3');
-    });
-
-});
