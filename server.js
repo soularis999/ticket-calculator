@@ -17,7 +17,7 @@ app.use((req, resp, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, "ui/dist/ui")));
+app.use(express.static(path.join(__dirname, "dist/")));
 
 // add router for the main render
 app.use("/api/", require("./handler"));
