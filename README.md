@@ -21,3 +21,7 @@ Run the following command in the directory <br/>
 
 The server will default to port 3000. However, this can we overriden by
 env variable TICKET_CALC_APP_PORT
+
+DEPLOY:
+heroku container:push web -a ticket-calc
+heroku container:release -a ticket-calc web
